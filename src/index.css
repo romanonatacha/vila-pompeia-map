@@ -1,14 +1,243 @@
 body {
+  color: #4e595d;
+  font: 18px 'Roboto Condensed', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.container {
+  background: rgb(39, 39, 39);
 }
+
+.list {
+  background: rgb(39, 39, 39);
+  color: white;
+  padding: 20px;
+  position: absolute;
+  -ms-transform: translate(-260px, 0);
+  -webkit-transform: translate(-260px, 0);
+  transform: translate(-300px, 0);
+  transition: transform 0.5s ease;
+  width: 260px;
+  z-index: 5;
+  height: 100%;
+}
+
+.map {
+  height: 100vh;
+}
+
+.app-title {
+  color: #00bdb6;
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 10px 0 30px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.foursquare-logo {
+  background: #ffffffde;
+  margin-top: 30px;
+  max-width: 100%;
+}
+
+.list-places {
+  height: 400px;
+  list-style-type: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.place {
+  margin: 10px 0;
+  padding: 7px 10px;
+}
+
+.list-places .place:hover {
+  cursor: pointer;
+  background-color: #ff8c52
+}
+
+.query {
+  border: 5px solid #fff;
+  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  font: 18px 'Source Sans Pro', sans-serif;
+  margin: 0 0 10px 0;
+  padding: 10px;
+  width: 230px;
+}
+
+.error {
+  color: #f94877;
+  font-style: italic;
+  padding-top: 400px;
+  text-align: center;
+}
+
+.no-results {
+  color: #f94877;
+  font-style: italic;
+  text-align: center;
+}
+
+.toggle {
+  background: #fff;
+  border: 2px solid #4e595d;
+  border-radius: 5px;
+  fill: #4e595d;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  z-index: 5;
+}
+
+.open {
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.loading-map {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-fs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.loading-text {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* infowindow */
+
+.place {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.place-title,
+.place-contact,
+.place-phone {
+  margin: 0 0 0 10px;
+}
+
+.place-data {
+  font-style: italic;
+  margin: 0 0 0 10px;
+}
+
+.place-price {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 10px 10px;
+}
+
+.place-phone {
+  color: #4e595d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.place-contact,
+.place-data,
+.place-tip,
+.place-phone {
+  font-size: 14px;
+}
+
+.place-tip {
+  font-style: italic;
+}
+
+.place-link {
+  color: #f94877;
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 20px 0 0 10px;
+  padding: 10px;
+  text-align: right;
+  text-decoration: none;
+}
+
+.place-link:hover,
+.place-phone:hover {
+  color: #3594c5;
+}
+
+.fs-link {
+  height: 30px;
+  vertical-align: middle;
+}
+
+.venue-error {
+  color: #f94877;
+  text-align: center;
+}
+/* scrollbar*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+@media (min-width: 600px) {
+  .list {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  .map {
+    margin-left: 300px
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .list-places {
+    height: 60vh;
+  }
+
+  /* scrollbar*/
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3594c5;
+  }
+}
+
+/* colors
+lt green: #aee9c6
+mid blue: #3594c5
+red: #f94877
+dark gray: #4e595d
+light gray:
+*/
