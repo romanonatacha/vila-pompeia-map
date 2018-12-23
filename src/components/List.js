@@ -24,6 +24,7 @@ class List extends Component {
   };
 
   componentDidMount() {
+    // get the foursquare locations and set new states with found places
     getFSLocations(this.props.mapCenter)
       .then(places => {
         this.setState({
@@ -31,6 +32,7 @@ class List extends Component {
           filteredPlaces: places,
           apiReturned: true
         });
+        // add markers on found places
         if (places) this.addMarkers(places);
       })
       .catch(error => this.setState({ apiReturned: false }));
@@ -156,7 +158,7 @@ class List extends Component {
     } else {
       return (
         <div className="loading-fs">
-          <h4 className="loading-text">Loading Restaurants...</h4>
+          <h4 className="loading-text">Loading...</h4>
           <img src={loader} className="loader" alt="loading" />
         </div>
       );

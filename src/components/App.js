@@ -71,15 +71,7 @@ class App extends Component {
   };
 
   render() {
-    const {
-      listOpen,
-      map,
-      infowindow,
-      bounds,
-      mapReady,
-      mapCenter,
-      mapError
-    } = this.state;
+    const { listOpen, map, infowindow, bounds, mapReady, mapCenter, mapError } = this.state;
 
     return (
       <div className="container" role="main">
@@ -108,8 +100,7 @@ class App extends Component {
             />
           ) : (
             <p>
-              We are experiencing loading issues. Please check your internet
-              connection
+              Something is worng. Please check your internet connection
             </p>
           )}
           <img
@@ -121,7 +112,7 @@ class App extends Component {
         <section id="map" className="map" role="application">
           {mapError ? (
             <div id="map-error" className="error" role="alert">
-              Oops something wrong... Please come back later...
+              Oops, something is wrong... Please come back later...
             </div>
           ) : (
             <div className="loading-map">
