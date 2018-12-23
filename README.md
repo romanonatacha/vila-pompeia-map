@@ -1,4 +1,4 @@
-Vilaa Pompeia Food n' Bar
+Vila Pompeia Food n' Bar
 ===============================
 
 ## Description
