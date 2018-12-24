@@ -20,7 +20,8 @@ class List extends Component {
     query: "",
     allPlaces: [],
     filteredPlaces: null,
-    apiReturned: false
+    apiReturned: false,
+    apiError: false
   };
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class List extends Component {
         // add markers on found places
         if (places) this.addMarkers(places);
       })
-      .catch(error => this.setState({ apiReturned: false }));
+      .catch(error => this.setState({ apiError: true }));
   }
 
   addMarkers(places) {
@@ -137,7 +138,7 @@ class List extends Component {
             onChange={this.filterPlaces}
             className="query"
             role="search"
-            aria-labelledby="text filter"
+            aria-label="text filter"
             tabIndex={listOpen ? "0" : "-1"}
           />
           {apiReturned && filteredPlaces.length > 0 ? (

@@ -16,7 +16,7 @@ class Place extends Component {
     const { place, listOpen } = this.props;
 
     return (
-      <li className="place">
+      <li className="place" aria-label="Place">
         <div
           onClick={this.showInfo}
           onKeyPress={this.showInfo}

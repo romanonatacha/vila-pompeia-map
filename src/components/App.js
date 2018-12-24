@@ -8,7 +8,7 @@ import foursquare from "../images/foursquare.png";
 
 class App extends Component {
   state = {
-    listOpen: false,
+    listOpen: true,
     map: {},
     infowindow: {},
     bounds: {},
@@ -21,9 +21,14 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.updateWidth);
+
+    // If there's a error on google map
+    window.gm_authFailure = () => {
+      this.setState({ mapError: true });
+    };
   }
 
-  componentDidUpdate({ isScriptLoadSucceed }) {
+  componentWillReceiveProps({ isScriptLoadSucceed }) {
     // Check if script is loaded and if map is defined
     if (isScriptLoadSucceed && !this.state.mapReady) {
       // create map
@@ -69,6 +74,10 @@ class App extends Component {
       map.fitBounds(bounds);
     }
   };
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWidth);
+  }
 
   render() {
     const { listOpen, map, infowindow, bounds, mapReady, mapCenter, mapError } = this.state;

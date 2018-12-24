@@ -37,6 +37,12 @@ npm start
 
 * With your server running, visit the site: http://localhost:3000
 
+## Testing offline
+The service worker is from the create-react-app and it only works in production mode, so you run
+```
+npm run build
+```
+
 ## Build With
 
 * [ReactJS](https://reactjs.org/)
