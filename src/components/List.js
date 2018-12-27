@@ -124,7 +124,7 @@ class List extends Component {
     const { listOpen } = this.props;
 
     // API request fails
-    if (apiReturned && !filteredPlaces) {
+    if (this.state.apiError) {
       return <div> Oops, something is wrong! Please come back later.</div>;
 
       // API request returns successfully
